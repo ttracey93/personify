@@ -14,7 +14,8 @@ Personify.Routers = Personify.Routers || {};
             'people/:id': 'person',
             'about': 'about',
             'contact': 'contact',
-            'mother': 'mother'
+            'mother': 'mother',
+            'mother/:key': 'mother'
         },
         
         hello: function() {
@@ -71,9 +72,9 @@ Personify.Routers = Personify.Routers || {};
             }
         },
 
-        mother: function() {
+        mother: function(key) {
             if(Personify.Views.mother) {
-                Personify.Views.mother.render();
+                Personify.Views.mother.render(key);
             }
             else {
                 Personify.Views.mother = new Personify.Views.Mother();

@@ -89,9 +89,23 @@
                         route('#/people');
                     },
 
-                    '(*a) (fuck) (shit) (ass) (tits) (piss) (*b)': function() {
-                        route('#/mother');
+                    // joke routes
+                    '(*a) shit (*b)': function() {
+                        route('#/mother/s');
+                    },
+
+                    '(*a) ass (*b)': function() {
+                        route('#/mother/a');
+                    },
+
+                    '(*a) terrible (*b)': function() {
+                        route('#/mother/what');
+                    },
+
+                    '(*a) (fuck) (tits) (piss) (*b)': function() {
+                        route('#/mother/default');
                     }
+
                 };
 
                 // Add our commands to annyang

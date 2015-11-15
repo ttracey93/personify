@@ -13,13 +13,30 @@ Personify.Views = Personify.Views || {};
 
         events: {},
 
-        initialize: function () {
-            //this.listenTo(this.model, 'change', this.render);
-            this.render();
+        messages: {
+            'default': 'Do you kiss your mother with that mouth?',
+            'f': 'Come on with the language',
+            's': 'There could be children nearby',
+            'a': 'This is a library!',
+            'what': 'You keep using that word. I do not think it means what you think it means'
         },
 
-        render: function () {
-            this.$el.html(this.template());
+        initialize: function (options) {
+            //this.listenTo(this.model, 'change', this.render);
+            if(options) {
+                this.render(options.key);
+            }
+            else {
+                this.render();
+            }
+        },
+
+        render: function (key) {
+            if(key == null) {
+                key = 'default';
+            }
+
+            this.$el.html(this.template({'message': this.messages[key]}));
         }
 
     });
