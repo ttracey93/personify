@@ -10,19 +10,21 @@ Personify.Models = Personify.Models || {};
         idAttribute: '_id',
 
         url: function() {
-            return Personify.Api.url + '/people/' + this.get('_id');
+            if(this.get('_id')) {
+                return Personify.Api.url + '/people/' + this.id;
+            }
+            else {
+                return Personify.Api.url + '/people/';
+            }
         },
 
         initialize: function(id) {
             if(id != null) {
-                this.set('_id', id);
                 this.id = id;
-                this._id = id;
             }
         },
 
         defaults: {
-            '_id': '',
             'first_name': '',
             'last_name': '',
             'date_of_birth': '',

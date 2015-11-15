@@ -17,6 +17,13 @@ Personify.Views = Personify.Views || {};
                 toastr.info(this.model.get('first_name') + '\'s info was preserved');
             },
 
+            'click #delete': function() {
+                this.model.destroy().then(function(response) {
+                    window.router.navigate('#/people', {trigger: true});
+                    toastr.error(response['first_name'] + ' was deleted');
+                });
+            },
+
             'click #save': function() {
                 this.model.set('first_name', $('#first_name').val());
                 this.model.set('last_name', $('#last_name').val());
@@ -31,13 +38,25 @@ Personify.Views = Personify.Views || {};
         },
 
         initialize: function (id) {
-            this.model = new Personify.Models.Person(id);
+            this.model = new Personify.Models.Person();
 
-            this.model.fetch().then(this.render());
+            this.model.id = id;
+            this.model.set('_id', id);
+
+            var el = this.el;
+            var t = this.template;
+
+            this.model.on('sync', function(model) {
+                var dob = model.get('date_of_birth').substr(0, 10);
+                model.set('date_of_birth', dob);
+                $(el).html(t(model.attributes));
+            });
+
+            this.model.fetch();
         },
 
         render: function () {
-            $(this.el).html(this.template(this.model.toJSON()));
+            $(el).html(template(model.toJSON()));
         }
 
     });

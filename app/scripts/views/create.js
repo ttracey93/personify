@@ -12,8 +12,9 @@ Personify.Views = Personify.Views || {};
         'el': '#child-container',
 
         events: {
-            'click #cancel': function() {
-                window.router.navigate('#/')
+            'click #abort': function() {
+                window.router.navigate('#/people');
+                toastr.info('Mission aborted');
             },
 
             'click #create': function() {
@@ -23,7 +24,6 @@ Personify.Views = Personify.Views || {};
                 this.model.set('zip', $('#zip').val());
 
                 this.model.save(this.model.attributes).then(function(response) {
-                    console.log(response);
                     window.router.navigate('#/people');
                     toastr.success(response['first_name'] + ' was added');
                 });
