@@ -1,0 +1,56 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col s12">
+			<h3 class="center-align indigo-text text-lighten-3 margin-top">
+				Say <b>LIST PEOPLE</b> or click the button below to get started
+			</h3>
+			
+			<div class="center-align margin-top">
+				<button id="list-people" class="waves-effect waves-light deep-purple btn">
+					<i class="fa fa-users"></i>
+					List People
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	if (annyang) {
+		function route(to) {
+			console.log('Routing to ' + to);
+			window.router.navigate(to, {trigger: true});
+		}
+
+		// Let's define our first command. First the text we expect, and then the function it should call
+		var commands = {
+			'home': function() {
+				route('#/');
+			},
+
+			'personify': function() {
+				route('#/');
+			},
+
+			'about': function() {
+				route('#/about');
+			},
+
+			'contact': function() {
+				route('#/contact');
+			},
+
+			'list people': function() {
+				route('#/people');
+			}
+		};
+
+		// Add our commands to annyang
+		annyang.addCommands(commands);
+
+		console.log(annyang);
+
+		// Start listening. You can call this here, or attach this call to an event, button, etc.
+		annyang.start();
+	}
+</script>

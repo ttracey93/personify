@@ -1,0 +1,42 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow: auto;
+}
+
+.full-page {
+    width: 100%;
+    height: 100%;
+}
+
+.margin-top {
+    margin-top: 10%;
+}
+
+.person-card label {
+    color: #263238;
+}
+
+.person-card input {
+    color: #673ab7;
+}
+
+.person-card input[type=text]:disabled {
+    color: black !important;
+}
+
+.nav-icon {
+    margin-right: 10px;
+}
+
+@media screen and (min-width:993px) {
+    .brand-logo {
+        margin-left: 10px;
+    }
+}
