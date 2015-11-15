@@ -11,7 +11,11 @@ Personify.Views = Personify.Views || {};
         
         el: '#child-container',
 
-        events: {},
+        events: {
+            'click #add_a_person': function() {
+                window.router.navigate('#/people/new', {trigger: true});
+            }
+        },
 
         initialize: function () {
             //this.listenTo(this.model, 'change', this.render);

@@ -17,6 +17,8 @@
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="bower_components/toastr/toastr.min.css">
     </head>
     <body>
         <!--[if lt IE 10]>
@@ -41,6 +43,7 @@
         
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
+        <script src="bower_components/toastr/toastr.min.js"></script>
 
         <!-- build:js({.tmp,app}) scripts/main.js -->
         <script src="scripts/main.js"></script>
@@ -54,6 +57,49 @@
         <script src="scripts/views/person.js"></script>
         <script src="scripts/views/about.js"></script>
         <script src="scripts/views/contact.js"></script>
+        <script src="scripts/views/create.js"></script>
+        <script src="scripts/views/mother.js"></script>
         <!-- endbuild -->
+
+        <script>
+            if (annyang) {
+                function route(to) {
+                    window.router.navigate(to, {trigger: true});
+                }
+
+                // Let's define our first command. First the text we expect, and then the function it should call
+                var commands = {
+                    'home': function() {
+                        route('#/');
+                    },
+
+                    'personify': function() {
+                        route('#/');
+                    },
+
+                    'about': function() {
+                        route('#/about');
+                    },
+
+                    'contact': function() {
+                        route('#/contact');
+                    },
+
+                    'list people': function() {
+                        route('#/people');
+                    },
+
+                    '(*a) (fuck) (shit) (ass) (tits) (piss) (*b)': function() {
+                        route('#/mother');
+                    }
+                };
+
+                // Add our commands to annyang
+                annyang.addCommands(commands);
+
+                // Start listening. You can call this here, or attach this call to an event, button, etc.
+                annyang.start();
+            }
+        </script>
     </body>
 </html>

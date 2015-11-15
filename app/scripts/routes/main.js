@@ -10,9 +10,11 @@ Personify.Routers = Personify.Routers || {};
             '': 'hello',
             'hello': 'hello',
             'people': 'people',
+            'people/new': 'create',
             'people/:id': 'person',
             'about': 'about',
-            'contact': 'contact'
+            'contact': 'contact',
+            'mother': 'mother'
         },
         
         hello: function() {
@@ -30,6 +32,15 @@ Personify.Routers = Personify.Routers || {};
             }
             else {
                 Personify.Views.people = new Personify.Views.People();                
+            }
+        },
+
+        create: function() {
+            if(Personify.Views.create) {
+                Personify.Views.create.initialize();
+            }
+            else {
+                Personify.Views.create = new Personify.Views.Create();
             }
         },
 
@@ -57,6 +68,15 @@ Personify.Routers = Personify.Routers || {};
             }
             else {
                 Personify.Views.contact = new Personify.Views.Contact();
+            }
+        },
+
+        mother: function() {
+            if(Personify.Views.mother) {
+                Personify.Views.mother.render();
+            }
+            else {
+                Personify.Views.mother = new Personify.Views.Mother();
             }
         }
     });

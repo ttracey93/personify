@@ -22,6 +22,7 @@ Personify.Collections = Personify.Collections || {};
         },
 
         parse: function(response) {
+            console.log(response);
             return response;
         },
 
@@ -31,8 +32,20 @@ Personify.Collections = Personify.Collections || {};
             var item_el = this.item_el;
             var item_template = this.item_template;
 
+            console.log(this.models);
+
             this.models.forEach(function(model) {
-               $(item_el).html(item_template(model.attributes));
+                console.log(model);
+
+                try {
+                    if(model.get('first_name') != null && model.get('first_name') != '') {
+                        $(item_el).append(item_template(model.attributes));
+                    }
+                }
+                catch(ex) {
+                    console.log(ex);
+                }
+
             });
         }
 
